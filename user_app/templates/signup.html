@@ -13,12 +13,20 @@
 
    
     <h1>Sign Up</h1>
-    <form>
-
-    <label>UserName :</label> <input type='text', id="UserName" name='UserName'>
-    <label>Password :</label> <input type='Password', id="Password" name='Password'>
+    <form method='post'>
+    {% csrf_token %}
+    
+    <label>username :</label> <input type='text', id="username" name='username'>
+    <label>password :</label> <input type='password', id="password" name='password'>
     <button type='submit'>Create</button>
-    </form>
+    
+    </form><br>
+    {% if user %}
+    <b>new user : {{user.username}}</b>
+    {% endif %}
+    {% if error_massage %}
+    <b>{{error_massage}}</b>
+    {% endif %}
     <!-- Add your JavaScript scripts or links here -->
     <script>
         // Your JavaScript code goes here
