@@ -1,0 +1,26 @@
+{% extends "home.html" %}
+
+    <!-- Sing in form -->
+{% block content %}
+    <h1>Sign In</h1>
+
+    <form method='post' >
+    {% csrf_token %}
+    
+    <label>username :</label> <input type='text', id="username" name='username'>
+    <label>password :</label> <input type='password', id="password" name='password'>
+    <button type='submit'>signin</button>
+    </form><br>
+
+    <!--sing up button-->
+    <a href="{% url 'signup' %}">SignUP</a><br>
+
+    <!--error_massage-->
+    {% if error_massage%}
+    {{error_massage}}
+    {% endif %}
+
+    {% endblock content%}
+   
+   
+

@@ -1,7 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+
+# home page
+@login_required(login_url='signin/')
+def home(request):
+    return render(request,'home.html')
+
+# sign out
 def signup(request):
     user=None
     error_massage =None
@@ -13,3 +22,23 @@ def signup(request):
         except :
             error_massage= 'username alredy existing'
     return render(request,'signup.html',{'user':user,'error_massage':error_massage})
+
+# sing in
+def signin(request):
+    error_massage=None
+    
+    if request.POST:
+        username = request.POST['username']
+        password = request.POST['password']
+        user=authenticate(username=username,password=password)
+        if user:
+            login(request,user)
+            return redirect('home')
+        else:
+            error_massage='wrong username or password'
+    return render(request,'signin.html',{'error_massage':error_massage})
+
+# sign out
+def signout(request):
+    logout(request)
+    return redirect('signin')

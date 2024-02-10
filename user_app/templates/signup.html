@@ -1,35 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>user_management</title>
-    <!-- Add your CSS stylesheets or links here -->
-    
-</head>
-<body>
+{% extends "home.html" %}
 
-    <!-- Your content goes here -->
-
+    <!--sing up form -->
+{% block content %}
    
     <h1>Sign Up</h1>
     <form method='post'>
     {% csrf_token %}
-    
     <label>username :</label> <input type='text', id="username" name='username'>
     <label>password :</label> <input type='password', id="password" name='password'>
     <button type='submit'>Create</button>
-    
     </form><br>
+
+    <!--sign in button-->
+    <a href="{% url 'signin' %}">Signin</a>
+
+     <!--display the new user name-->
     {% if user %}
     <b>new user : {{user.username}}</b>
     {% endif %}
+    <!--display the error_massage-->
     {% if error_massage %}
     <b>{{error_massage}}</b>
     {% endif %}
-    <!-- Add your JavaScript scripts or links here -->
-    <script>
-        // Your JavaScript code goes here
-    </script>
-</body>
-</html>
+
+    {% endblock content %}
+   
