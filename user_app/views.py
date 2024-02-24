@@ -16,8 +16,8 @@ def signin(request):
             login(request,user)
             return redirect('home')
         else:
-            error_message ='wrong username or password'
-    return render(request,'signin.html',{'error_message ':error_message })
+            error_message='wrong username or password'
+    return render(request,'signin.html',{'error_message':error_message})
 
 # home page
 @login_required(login_url='signin/')
