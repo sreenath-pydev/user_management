@@ -6,19 +6,18 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 # sing in
 def signin(request):
-    error_massage=None
+    error_message=None
     
     if request.POST:
         User = request.POST['username']
-        
         Pass = request.POST['password']
         user=authenticate(username=User,password=Pass)
         if user:
             login(request,user)
             return redirect('home')
         else:
-            error_massage='wrong username or password'
-    return render(request,'signin.html',{'error_massage':error_massage})
+            error_message ='wrong username or password'
+    return render(request,'signin.html',{'error_message ':error_message })
 
 # home page
 @login_required(login_url='signin/')
