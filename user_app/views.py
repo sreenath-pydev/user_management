@@ -27,15 +27,16 @@ def home(request):
 # sign out
 def signup(request):
     user=None
-    error_massage =None
+    error_message =None
     if request.POST:
-        username = request.POST['username']
-        password = request.POST['password']
+        UserN = request.POST['username']
+        PassW = request.POST['password']
         try:
-            user = User.objects.create_user(username=username,password=password)
+            user = User.objects.create_user(username=UserN,password=PassW)
+            
         except :
-            error_massage= 'username alredy existing'
-    return render(request,'signup.html',{'user':user,'error_massage':error_massage})
+            error_message= 'username alredy existing'
+    return render(request,'signup.html',{'user':user,'error_message':error_message})
 
 
 # sign out

@@ -37,7 +37,8 @@
         </ul>
       </div>
     <div class="tab-pane fade show active" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
-        <form>
+        <form method='post'>
+            {% csrf_token %}
           <div class="text-center mb-3">
             <p>Sign up with:</p>
             <button type="button" class="btn btn-link btn-floating mx-1">
@@ -59,35 +60,33 @@
     
           <p class="text-center">or:</p>
     
-          <!-- Name input -->
-          <div class="form-outline mb-4">
-            <input type="text" id="registerName" class="form-control" />
-            <label class="form-label" for="registerName">Name</label>
-          </div>
+        
     
           <!-- Username input -->
           <div class="form-outline mb-4">
-            <input type="text" id="registerUsername" class="form-control" />
-            <label class="form-label" for="registerUsername">Username</label>
+            <input type="text" id="username" name='username' class="form-control" required=True />
+            <label class="form-label" for="Usernam">Username or Email</label>
           </div>
     
-          <!-- Email input -->
-          <div class="form-outline mb-4">
-            <input type="email" id="registerEmail" class="form-control" />
-            <label class="form-label" for="registerEmail">Email</label>
-          </div>
+          
     
           <!-- Password input -->
           <div class="form-outline mb-4">
-            <input type="password" id="registerPassword" class="form-control" />
-            <label class="form-label" for="registerPassword">Password</label>
+            <input type="password" id="password" name="password" class="form-control" required=True/>
+            <label class="form-label" for="passwor">Password</label>
           </div>
     
-          <!-- Repeat Password input -->
+          <!-- Repeat Password input 
           <div class="form-outline mb-4">
             <input type="password" id="registerRepeatPassword" class="form-control" />
             <label class="form-label" for="registerRepeatPassword">Repeat password</label>
+          </div>-->
+          <!--error_massage-->
+          {% if error_message %}
+          <div class="alert alert-danger" role="alert">
+            {{ error_message }}
           </div>
+          {% endif %}
     
           <!-- Checkbox -->
           <div class="form-check d-flex justify-content-center mb-4">
@@ -100,7 +99,7 @@
     
           <!-- Submit button -->
          
-          <button type="submit" class="btn btn-primary btn-block mb-3">Sign in</button>
+          <button type="submit" class="btn btn-primary btn-block mb-3">Sign up</button>
           <!-- Display error message -->
         
         </form>
