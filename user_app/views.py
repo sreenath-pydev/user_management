@@ -28,15 +28,22 @@ def home(request):
 def signup(request):
     user=None
     error_message =None
+    success_message=None
     if request.POST:
         UserN = request.POST['username']
         PassW = request.POST['password']
-        try:
-            user = User.objects.create_user(username=UserN,password=PassW)
+        Re_pw = request.POST['repeat_password']
+        if PassW != Re_pw:
+            error_message = 'Passwords do not match'
+        else:
+            try:
+                user = User.objects.create_user(username=UserN,password=PassW)
+                success_message='User created successfully!'
+        
             
-        except :
-            error_message= 'username alredy existing'
-    return render(request,'signup.html',{'user':user,'error_message':error_message})
+            except :
+                error_message= 'username alredy existing'
+    return render(request,'signup.html',{'user':user,'error_message':error_message ,'success_message': success_message})
 
 
 # sign out

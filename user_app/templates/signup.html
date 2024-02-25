@@ -76,11 +76,17 @@
             <label class="form-label" for="passwor">Password</label>
           </div>
     
-          <!-- Repeat Password input 
+          <!-- Repeat Password input -->
           <div class="form-outline mb-4">
-            <input type="password" id="registerRepeatPassword" class="form-control" />
-            <label class="form-label" for="registerRepeatPassword">Repeat password</label>
-          </div>-->
+            <input type="password" id="repeat_password" name='repeat_password' class="form-control" />
+            <label class="form-label" for="repeat_passwor">Repeat password</label>
+          </div>
+          <!--success message-->
+          {% if success_message%}
+          <div class="alert alert-success" role="alert">
+          {{success_message}}
+          </div>
+          {% endif %}
           <!--error_massage-->
           {% if error_message %}
           <div class="alert alert-danger" role="alert">
@@ -90,8 +96,8 @@
     
           <!-- Checkbox -->
           <div class="form-check d-flex justify-content-center mb-4">
-            <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked
-              aria-describedby="registerCheckHelpText" />
+            <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck"  
+              aria-describedby="registerCheckHelpText" required=True/>
             <label class="form-check-label" for="registerCheck">
               I have read and agree to the terms
             </label>
