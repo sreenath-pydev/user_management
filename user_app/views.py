@@ -32,12 +32,13 @@ def signup(request):
     if request.POST:
         UserN = request.POST['username']
         PassW = request.POST['password']
+        Email = request.POST['email']
         Re_pw = request.POST['repeat_password']
         if PassW != Re_pw:
             error_message = 'Passwords do not match'
         else:
             try:
-                user = User.objects.create_user(username=UserN,password=PassW)
+                user = User.objects.create_user(username=UserN,password=PassW,email=Email)
                 success_message='User created successfully!'
         
             
