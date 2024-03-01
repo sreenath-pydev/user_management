@@ -36,6 +36,8 @@ def signup(request):
         Re_pw = request.POST['repeat_password']
         if PassW != Re_pw:
             error_message = 'Passwords do not match'
+        elif User.objects.filter(email=Email).exists():
+            email_error_message = 'Email address is already registered.'
         else:
             try:
                 user = User.objects.create_user(username=UserN,password=PassW,email=Email)
@@ -44,7 +46,7 @@ def signup(request):
             
             except :
                 error_message= 'username alredy existing'
-    return render(request,'signup.html',{'user':user,'error_message':error_message ,'success_message': success_message})
+    return render(request,'signup.html',{'user':user,'error_message':error_message ,'success_message': success_message,'email_error_message':email_error_message})
 
 
 # sign out

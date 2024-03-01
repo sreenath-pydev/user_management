@@ -70,9 +70,15 @@
     
           <!-- Email input -->
           <div class="form-outline mb-4">
-            <input type="email" id="email" name='email' class="form-control" />
+            <input type="email" id="email" name='email' class="form-control" unique=True />
             <label class="form-label" for="email">Email</label>
           </div>
+          <!--error_massage-->
+          {% if email_error_message %}
+          <div class="alert alert-danger" role="alert">
+            {{ email_error_message }}
+          </div>
+          {% endif %}
     
           <!-- Password input -->
           <div class="form-outline mb-4">
