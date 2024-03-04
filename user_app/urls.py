@@ -17,9 +17,11 @@ Including another URLconf
 
 from django.urls import path
 from user_app import views
+from django.conf.urls import include
 urlpatterns = [
     path('home/',views.home,name='home'),
     path('signup/',views.signup,name='signup'),
     path('',views.signin,name='signin'),
     path('signout/',views.signout,name='signout'),
+    path('social-auth/', include('social_django.urls', namespace='social')),
 ]

@@ -45,9 +45,9 @@
               <i class="fab fa-facebook-f"></i>
             </button>
     
-            <button type="button" class="btn btn-link btn-floating mx-1">
+            <a href="{% url 'social:begin' 'google-oauth2' %}" class="btn btn-link btn-floating mx-1">
               <i class="fab fa-google"></i>
-            </button>
+          </a>
     
             <button type="button" class="btn btn-link btn-floating mx-1">
               <i class="fab fa-twitter"></i>
@@ -91,6 +91,7 @@
             <input type="password" id="repeat_password" name='repeat_password' class="form-control" />
             <label class="form-label" for="repeat_passwor">Repeat password</label>
           </div>
+
           <!--success message-->
           {% if success_message%}
           <div class="alert alert-success" role="alert">

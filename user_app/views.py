@@ -28,6 +28,7 @@ def home(request):
 def signup(request):
     user=None
     error_message =None
+    email_error_message= None
     success_message=None
     if request.POST:
         UserN = request.POST['username']
