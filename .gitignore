@@ -1,0 +1,53 @@
+# Python cache and compiled files
+*.pyc
+*.pyo
+__pycache__/
+*.pyd
+
+# Environment files
+.env
+*.env
+
+# Django specific
+db.sqlite3
+*.log
+media/
+staticfiles/
+
+# Virtual environment
+venv/
+env/
+um_venv/
+.env
+# IDE and editor-specific files
+.vscode/
+.idea/
+*.swp
+*~
+
+# macOS-specific files
+.DS_Store
+
+# Logs
+*.log
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+
+# Python bytecode
+*.egg
+*.egg-info/
+dist/
+build/
+*.egg-info/
+
+# Node.js specific (if you use npm for static assets)
+node_modules/
+npm-debug.log*
+
+# Deployment files
+*.pid
+*.bak
+*.backup
